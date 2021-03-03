@@ -38,6 +38,10 @@
 
 #include <freetype/config/ftheader.h>
 
+#if _WIN64
+#define ENVIRONMENT64
+#endif
+
 #endif /* FT2BUILD_H_ */
 
 
