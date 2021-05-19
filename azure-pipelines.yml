@@ -3,26 +3,26 @@ trigger:
 
 strategy:
   matrix:
-    #linux:
-    #  imageName: 'ubuntu-latest'
-    #  sourceFolder: ''
-    #  sourceFile: 'libfreetype.so'
-    #  targetFile: 'libfreetype6.so'
-    #  artifactName : 'linux_x64'
-    #  buildCommand: | 
-    #    mkdir build && cd build
-    #    cmake .. -D BUILD_SHARED_LIBS=true -D CMAKE_BUILD_TYPE=Release
-    #    make
-    #    tree
-    #windows:
-    #  imageName: 'windows-latest'
-    #  sourceFolder: 'objs\'
-    #  sourceFile: 'freetype.dll'
-    #  targetFile: 'freetype6.dll'
-    #  artifactName : 'windows_x64'
+    linux:
+      imageName: 'ubuntu-latest'
+      sourceFolder: ''
+      sourceFile: 'libfreetype.so'
+      targetFile: 'libfreetype6.so'
+      artifactName : 'linux_x64'
+      buildCommand: | 
+        mkdir build && cd build
+        cmake .. -D BUILD_SHARED_LIBS=true -D CMAKE_BUILD_TYPE=Release
+        make
+        tree
+    windows:
+      imageName: 'windows-latest'
+      sourceFolder: 'objs\'
+      sourceFile: 'freetype.dll'
+      targetFile: 'freetype6.dll'
+      artifactName : 'windows_x64'
     android:
       imageName: 'windows-latest'
-      sourceFolder: 'obj\local\armeabi-v7a\'
+      sourceFolder: 'builds\android\obj\local\armeabi-v7a\'
       sourceFile: 'libfreetype6.so'
       targetFile: 'libfreetype6.so'
       buildCommand: | 
