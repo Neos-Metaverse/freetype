@@ -28,7 +28,7 @@ strategy:
       buildCommand: | 
         cd builds
         cd android
-        ndk-build
+        $(ANDROID_NDK_PATH)/ndk-build
         tree /A /F
 
 
