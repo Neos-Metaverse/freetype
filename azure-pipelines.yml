@@ -9,6 +9,8 @@ strategy:
       sourceFile: 'libfreetype.so'
       artifactName : 'linux_x64'
       buildCommand: | 
+        mkdir build && cd build
+        cmake ..
         make
         tree
     #windows:
