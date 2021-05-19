@@ -41,7 +41,7 @@ steps:
   inputs:
     targetType: 'inline'
     script: '$(buildCommand)'
-  condition: eq( variables['Agent.OS'], 'Windows_NT' )
+  condition: eq( variables['Agent.OS'], 'Linux' )
 
 - task: CopyFiles@2
   inputs:
