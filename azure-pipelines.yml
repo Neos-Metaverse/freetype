@@ -10,7 +10,7 @@ strategy:
       artifactName : 'linux_x64'
       buildCommand: | 
         mkdir build && cd build
-        cmake ..
+        cmake .. -D BUILD_SHARED_LIBS=true -D CMAKE_BUILD_TYPE=Release
         make
         tree
     #windows:
