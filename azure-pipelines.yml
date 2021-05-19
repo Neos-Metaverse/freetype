@@ -1,19 +1,47 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
 trigger:
-- main
+- neos-release
+
+strategy:
+  matrix:
+    linux:
+      imageName: 'ubuntu-latest'
+      sourceFolder: ''
+      sourceFile: 'libopus.so'
+      artifactName : 'linux_x64'
+    windows:
+      imageName: 'windows-latest'
+      sourceFolder: 'objs\'
+      sourceFile: 'freetype.dll'
+      artifactName : 'windows_x64'
+    android:
+      imageName: 'windows-latest'
+      sourceFolder: ''
+      sourceFile: 'libopus.so'
+      buildSystem : 'CMAKE'
+
 
 pool:
-  vmImage: ubuntu-latest
+  vmImage: $(imageName)
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+- task: VSBuild@1
+  inputs:
+    solution: 'freetype\builds\windows\vc2010\freetype.sln'
+    platform: 'x64'
+    configuration: 'Release'
+    maximumCpuCount: true
+    msbuildArchitecture: 'x64'
+  condition: eq( variables['Agent.JobName'], 'Job windows' )
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: '$(sourceFolder)'
+    Contents: '$(sourceFile)'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    CleanTargetFolder: true
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: '$(artifactName)'
+    publishLocation: 'Container'
