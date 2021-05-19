@@ -22,7 +22,7 @@ strategy:
       artifactName : 'windows_x64'
     android:
       imageName: 'windows-latest'
-      sourceFolder: 'builds\android\obj\local\armeabi-v7a\'
+      sourceFolder: 'builds\android\libs\armeabi-v7a\'
       sourceFile: 'libfreetype6.so'
       targetFile: 'libfreetype6.so'
       buildCommand: | 
