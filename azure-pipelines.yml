@@ -5,9 +5,10 @@ strategy:
   matrix:
     linux:
       imageName: 'ubuntu-latest'
-      sourceFolder: ''
-      sourceFile: 'libopus.so'
+      sourceFolder: 'builds\linux\'
+      sourceFile: 'libfreetype.so'
       artifactName : 'linux_x64'
+      buildCommand: 'make builds\linux'
     windows:
       imageName: 'windows-latest'
       sourceFolder: 'objs\'
@@ -16,7 +17,7 @@ strategy:
     android:
       imageName: 'windows-latest'
       sourceFolder: ''
-      sourceFile: 'libopus.so'
+      sourceFile: 'libfreetype.so'
       buildSystem : 'CMAKE'
 
 
@@ -32,6 +33,11 @@ steps:
     maximumCpuCount: true
     msbuildArchitecture: 'x64'
   condition: eq( variables['Agent.JobName'], 'Job windows' )
+
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: '$(buildCommand)'
 
 - task: CopyFiles@2
   inputs:
