@@ -8,9 +8,10 @@ strategy:
       sourceFolder: 'builds\linux\'
       sourceFile: 'libfreetype.so'
       artifactName : 'linux_x64'
-      buildCommand: 'cd builds
-      cd linux
-      make'
+      buildCommand: | 
+        cd builds
+        cd linux
+        make
     windows:
       imageName: 'windows-latest'
       sourceFolder: 'objs\'
@@ -40,6 +41,7 @@ steps:
   inputs:
     targetType: 'inline'
     script: '$(buildCommand)'
+  condition: eq( variables['Agent.OS'], 'Windows_NT' )
 
 - task: CopyFiles@2
   inputs:
