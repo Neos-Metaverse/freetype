@@ -26,7 +26,7 @@ pool:
 steps:
 - task: VSBuild@1
   inputs:
-    solution: 'freetype\builds\windows\vc2010\freetype.sln'
+    solution: 'builds\windows\vc2010\freetype.sln'
     platform: 'x64'
     configuration: 'Release'
     maximumCpuCount: true
