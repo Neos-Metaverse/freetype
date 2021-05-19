@@ -11,6 +11,7 @@ strategy:
       buildCommand: | 
         cd builds
         cd linux
+        tree 
         make
     #windows:
     #  imageName: 'windows-latest'
