@@ -12,16 +12,16 @@ strategy:
         cd builds
         cd linux
         make
-    windows:
-      imageName: 'windows-latest'
-      sourceFolder: 'objs\'
-      sourceFile: 'freetype.dll'
-      artifactName : 'windows_x64'
-    android:
-      imageName: 'windows-latest'
-      sourceFolder: ''
-      sourceFile: 'libfreetype.so'
-      buildSystem : 'CMAKE'
+    #windows:
+    #  imageName: 'windows-latest'
+    #  sourceFolder: 'objs\'
+    #  sourceFile: 'freetype.dll'
+    #  artifactName : 'windows_x64'
+    #android:
+    #  imageName: 'windows-latest'
+    #  sourceFolder: ''
+    #  sourceFile: 'libfreetype.so'
+    #  buildSystem : 'CMAKE'
 
 
 pool:
