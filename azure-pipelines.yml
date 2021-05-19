@@ -8,7 +8,9 @@ strategy:
       sourceFolder: 'builds\linux\'
       sourceFile: 'libfreetype.so'
       artifactName : 'linux_x64'
-      buildCommand: 'make builds\linux'
+      buildCommand: 'cd builds
+      cd linux
+      make'
     windows:
       imageName: 'windows-latest'
       sourceFolder: 'objs\'
